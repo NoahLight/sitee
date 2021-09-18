@@ -87,7 +87,7 @@ def chap_dl(cap, pilih, title):
 
 def get_chap(manga):
 	_cap=[]
-	req=ses.get("https://mangaid.click/manga/"+manga)
+	req=ses.get("https://doujindesu.id/series/manga/"+manga)
 	bs=BS(req.text, "html.parser")
 	data=bs.find_all("h5", {"class":"chapter-title-rtl"})
 
@@ -107,7 +107,7 @@ def get_chap(manga):
 	return hasil
 
 def cari(q):
-	req=ses.get("https://mangaid.click/search?query="+q)
+	req=ses.get("https://doujindesu.id/search?query="+q)
 	return req.json()
 
 try:
