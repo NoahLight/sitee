@@ -87,7 +87,7 @@ def chap_dl(cap, pilih, title):
 
 def get_chap(manga):
 	_cap=[]
-	req=ses.get("https://doujindesu.id/manga/"+manga)
+	req=ses.get("https://doujindesu.id/"+manga)
 	bs=BS(req.text, "html.parser")
 	data=bs.find_all("h5", {"class":"chapter-title-rtl"})
 
